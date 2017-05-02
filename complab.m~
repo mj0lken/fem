@@ -41,16 +41,12 @@ eq = 0;
 ep = 1;
 
 D = eye(2);
-K = zeros(ndof);
-f = zeros(ndof,1);
-
-[nie,n]=size(edof);
-t=edof(:,2:n);
+K = zeros(nelm);
+f = zeros(nelm);
 
 for i = 1:nelm
     [Ke, fe] = flw2te(ex(i,:),ey(i,:),ep,D,eq);
-    K(t(i,:),t(i,:)) = K(t(i,:),t(i,:))+Ke;
-    f(t(i,:))=f(t(i,:))+fe;
+    [K,f] = assem(edof,K,Ke,f,fe);
 end
 
 [a, Q] = solve(K,f,bc);
