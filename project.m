@@ -16,14 +16,16 @@ eldraw2(Ex,Ey,[1,2,1],edof(:,1));
 
 
 
-
+K = zeros(ndof);
+f = zeros(ndof,1);
 % Next : N-matrix!
 N_matrix;
-% C = [ones(3,1) ex' ey'];
-% Ne = [1 x y]*inv(C);
+
 
 
 %Creates the global K-matrix. 
 K_matrix;
 
+%Creates the C_matrix
+C_matrix;
 

@@ -33,7 +33,8 @@ x = linspace(2,8,nbr_of_elements+1);
 plot(x,a);
 
 %% Computer exercise 2
-
+clear all
+clc
 geom2;
 
 

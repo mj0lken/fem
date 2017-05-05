@@ -1,7 +1,6 @@
 %This is for solving the K-matrix
 
-K = zeros(ndof);
-f = zeros(ndof,1);
+
 for i = 1:size(edof1(:,1))
     [Ke, fe] = flw2te(Ex1(i,:),Ey1(i,:),thickness,D_pcb,0);
     [K, f] = assem(edof1,K,Ke,f,fe);    
