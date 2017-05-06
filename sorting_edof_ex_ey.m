@@ -12,11 +12,11 @@ for i = 1:nelm
         edof1 = [edof1;edof(i,:)];
         Ex1 = [Ex1;Ex(i,:)];
         Ey1 = [Ey1;Ey(i,:)];
-    elseif t(4,i) == 2
+    elseif t(4,i) == 3
         edof2 = [edof2;edof(i,:)];
         Ex2 = [Ex2;Ex(i,:)];
         Ey2 = [Ey2;Ey(i,:)];
-    elseif t(4,i) == 3
+    elseif t(4,i) == 2
         edof3 = [edof3;edof(i,:)];
         Ex3 = [Ex3;Ex(i,:)];
         Ey3 = [Ey3;Ey(i,:)];

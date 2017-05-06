@@ -1,5 +1,5 @@
 %This contains all constants.
-
+% 
 load('edges.mat');
 load('points.mat');
 load('triangles.mat');
@@ -25,9 +25,11 @@ p_sol = 7265; %kg/m^3
 c_sol = 210; %J/kgK
 alpha_sol = 1.2e-5; %1/K
 T0 = 30+273.15; %Kelvin
+% T0 = 30; %degrees
 a_c = 40; %W/m^2K
 q_el = 9e3; %W/m^2
 T_infty = 20+273.15; %Kelvin
+% T_infty = 20; %degrees
 thickness = 1; %of whatever
 
 %Consitutive matrices

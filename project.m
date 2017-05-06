@@ -21,11 +21,26 @@ f = zeros(ndof,1);
 % Next : N-matrix!
 N_matrix;
 
-
-
 %Creates the global K-matrix. 
 K_matrix;
 
+%Solving the stationary heat
+
+a_stationary = solve(K,f);
+
 %Creates the C_matrix
 C_matrix;
+
+%Solving the transient heat flow
+anew = ones(ndof,1)*T0;
+dt = 5;
+a_t = anew;
+for t = 1:1000
+    anew = time_step_heat_flow(anew,C,K,f,dt);z
+    a_t = [a_t,anew];
+end
+
+%Convert to degrees
+a_stationary = a_stationary-273.15;
+a_t = a_t -273.15;
 
