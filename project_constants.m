@@ -1,8 +1,8 @@
 %This contains all constants.
 % 
-load('edges.mat');
-load('points.mat');
-load('triangles.mat');
+% load('edges.mat');
+% load('points.mat');
+% load('triangles.mat');
 
 
 
