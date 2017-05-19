@@ -17,7 +17,7 @@ v_pcb = 0.136;
 k_pcb = 1.059; % W/mK
 p_pcb = 1850; %kg/m^3
 c_pcb = 950; %J/kgK
-alpha_pcb = 2*1e-5; %1/K
+alpha_pcn = 2*1e-5; %1/K
 E_sol = 50; %GPa
 v_sol = 0.36; 
 k_sol = 66.8; %W/mK
@@ -39,6 +39,6 @@ D_smd = [k_smd 0; 0 k_smd];
 D_sol = [k_sol 0; 0 k_sol];
 %Part2
 D_pcb2 = E_pcb/((1+v_pcb)*(1-2*v_pcb))*[1-v_pcb,v_pcb,0;v_pcb,1-v_pcb,0;0,0,1/2*(1-2*v_pcb)];
-D_smd2 = E_smd/((1+v_smd)*(1-2*v_smd))*[1-v_smd,v_smd,0;v_smd,1-v_smd,0;0,0,1/2*(1-2*v_smd)];
-D_sol2 = E_sol/((1+v_sol)*(1-2*v_sol))*[1-v_sol,v_sol,0;v_sol,1-v_sol,0;0,0,1/2*(1-2*v_sol)];
+D_smd2 = E_pcb/((1+v_pcb)*(1-2*v_pcb))*[1-v_pcb,v_pcb,0;v_pcb,1-v_pcb,0;0,0,1/2*(1-2*v_pcb)];
+D_pcb2 = E_pcb/((1+v_pcb)*(1-2*v_pcb))*[1-v_pcb,v_pcb,0;v_pcb,1-v_pcb,0;0,0,1/2*(1-2*v_pcb)];
 
