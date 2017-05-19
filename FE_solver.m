@@ -31,9 +31,9 @@ for i = 1:size(e(1,:)')
             f(e(1,i)) = f(e(1,i)) + (Le/2)*a_c*T_infty;
             f(e(2,i)) = f(e(2,i)) + (Le/2)*a_c*T_infty;
             %This method needs to be explained:
-            M = (a_c*Le)/6*[2 1;1 2];
-            t = [e(1,i), e(2,i)];
-            K(t,t) = K(t,t)+M;
+            Kc = (a_c*Le)/6*[2 1;1 2];
+            te = [e(1,i), e(2,i)];
+            K(te,te) = K(te,te)+Kc;
 
     elseif(e(5,i) == 3)
         Le = coord(e(1,i),1) - coord(e(2,i),1);
@@ -45,9 +45,9 @@ for i = 1:size(e(1,:)')
             f(e(1,i)) = f(e(1,i)) + (Le/2)*a_c*T_infty;
             f(e(2,i)) = f(e(2,i)) + (Le/2)*a_c*T_infty;
             %This method needs to be explained:
-            M = (a_c*Le)/6*[2 1;1 2];
-            t = [e(1,i), e(2,i)];
-            K(t,t) = K(t,t)+M;
+            Kc = (a_c*Le)/6*[2 1;1 2];
+            te = [e(1,i), e(2,i)];
+            K(te,te) = K(te,te)+Kc;
 
         end
     end

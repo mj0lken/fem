@@ -13,12 +13,18 @@ K = zeros(ndof);
 C = zeros(ndof);
 f = zeros(ndof,1);
 
-%Solver K, C, Kc and f
+%Solver K, C, 
 FE_solver;
 
 %Solving the stationary heat
 
 a_stationary = solve(K,f);
+
+%Creates the C_matrix
+% C_matrix;
+
+%Convert to degrees
+
 
 % transient_heat_flow;
 
