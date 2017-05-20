@@ -5,17 +5,17 @@ for i = 1:size(edof(:,1))
         [Ke, fe] = flw2te(ex(i,:),ey(i,:),thickness,D_pcb,0);
         [K,f] = assem(edof(i,:),K,Ke,f,fe);
          Ce = plantml(ex(i,:),ey(i,:),c_pcb*p_pcb);
-         C = assem(edof,C,Ce);
+         C = assem(edof(i,:),C,Ce);
     elseif(t(4,i) == 2)
         [Ke, fe] = flw2te(ex(i,:),ey(i,:),thickness,D_sol,0);
         [K,f] = assem(edof(i,:),K,Ke,f,fe);
         Ce = plantml(ex(i,:),ey(i,:),c_pcb*p_pcb);
-        C = assem(edof,C,Ce);
+        C = assem(edof(i,:),C,Ce);
     elseif(t(4,i) == 3)
         [Ke, fe] = flw2te(ex(i,:),ey(i,:),thickness,D_smd,0);
         [K,f] = assem(edof(i,:),K,Ke,f,fe);
         Ce = plantml(ex(i,:),ey(i,:),c_pcb*p_pcb);
-        C = assem(edof,C,Ce);
+        C = assem(edof(i,:),C,Ce);
         
     end
     

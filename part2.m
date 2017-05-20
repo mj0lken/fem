@@ -63,35 +63,40 @@ a_u = solve(K_load,f_load,bc);
 
 ed = extract(edof_load,a_u);
 
-e_es = [];
-e_et = [];
+Seff_el = zeros(ndof,1);
 for i = 1:size(edof_load(:,1))
   
     if(t(4,i) == 1)       
        [es,et] = plants(ex(i,:),ey(i,:),ep,D_pcb2,ed(i,:));
-        e_es = [e_es;es];
-        e_et = [e_et;et];
     elseif(t(4,i) == 2)
         [es,et] = plants(ex(i,:),ey(i,:),ep,D_sol2,ed(i,:));
-        e_es = [e_es;es];
-        e_et = [e_et;et];
     elseif(t(4,i) == 3)
-
         [es,et] = plants(ex(i,:),ey(i,:),ep,D_smd2,ed(i,:));
-        e_es = [e_es;es];
-        e_et = [e_et;et];
     end
+    Seff_el(i) = sqrt(es(1)^2 + es(2)^2+ 3*es(3)^2);
 end
 
-n_es = zeros(ndof,1);
+Seff_nod = zeros(ndof,1);
 
 for i=1:size(coord,1)
-[c0,c1]=find(edof(:,2:4)==i);
-n_es(i,1)=sum(e_es(c0))/size(c0,1);
+    [c0,c1]=find(edof(:,2:4)==i);
+    Seff_nod(i,1)=sum(Seff_el(c0))/size(c0,1);
 end
 
-ed = extract(edof,n_es);
+ed = extract(edof,Seff_nod);
 
- fill(ex',ey',ed');
- colorbar
+%  fill(ex',ey',ed');
+%  colormap(jet)
+%  colorbar
+ 
+eldraw2(ex,ey,[2,2,1])   
 
+ for i = 1:2:size(a_u)
+     coord(1,1)
+     pos = (i+1)/2;
+     coord(pos,1) = coord(pos,1)+a_u(i)*1e2;
+     coord(pos,2) = coord(pos,2) + a_u(i+1)*1e2;
+ end
+ 
+ [ex,ey]=coordxtr(edof,coord,(1:ndof)',3); 
+eldraw2(ex,ey,[3,4,2])   

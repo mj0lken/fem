@@ -24,7 +24,7 @@ a_stationary = solve(K,f);
 
 
 %Plotting the temperature field
-ed = extract(edof,a_stationary);
+% ed = extract(edof,a_stationary);
 
 % colormap(hot)
 % fill(ex',ey',ed');

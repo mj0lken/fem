@@ -59,16 +59,39 @@ bc = [];
         bc = [bc;e(2,i)*2, 0];   
     end
  end
-u = solve(K_load,f_load,bc);
+a_u = solve(K_load,f_load,bc);
 
-ed = extract(edof_load,u);
+ed = extract(edof_load,a_u);
 
+Seff_el = zeros(ndof,1);
 for i = 1:size(edof_load(:,1))
-   
-    
-    
+  
+    if(t(4,i) == 1)       
+       [es,et] = plants(ex(i,:),ey(i,:),ep,D_pcb2,ed(i,:));
+    elseif(t(4,i) == 2)
+        [es,et] = plants(ex(i,:),ey(i,:),ep,D_sol2,ed(i,:));
+    elseif(t(4,i) == 3)
+        [es,et] = plants(ex(i,:),ey(i,:),ep,D_smd2,ed(i,:));
+    end
+    Seff_el(i) = sqrt(es(1)^2 + es(2)^2+ 3*es(3)^2);
 end
 
+Seff_nod = zeros(ndof,1);
+
+for i=1:size(coord,1)
+    [c0,c1]=find(edof(:,2:4)==i);
+    Seff_nod(i,1)=sum(Seff_el(c0))/size(c0,1);
+end
+
+ed = extract(edof,Seff_nod);
+
  fill(ex',ey',ed');
-%  colorbar
+ colormap(jet)
+ colorbar
+ 
+ 
+ for i = 1:2:length(a_u)
+     coord(i+
+     coords(i+1/2,2) = i+1;
+ 
 

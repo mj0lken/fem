@@ -1,24 +1,24 @@
 %This contains all constants.
 
-load('e3.mat');
-load('p3.mat');
-load('t3.mat');
+load('e.mat');
+load('p.mat');
+load('t.mat');
 
 
 
-E_smd = 105; %GPa
+E_smd = 105e9; %Pa
 v_smd = 0.118; 
 k_smd = 0.29;%W/mK
 p_smd = 1850; %kg/m^3
 c_smd = 950; %J/kgK
 alpha_smd = 1.2e-5; %1/K
-E_pcb = 105; %GPa
+E_pcb = 105e9; %Pa
 v_pcb = 0.136;
 k_pcb = 1.059; % W/mK
 p_pcb = 1850; %kg/m^3
 c_pcb = 950; %J/kgK
 alpha_pcb = 2*1e-5; %1/K
-E_sol = 50; %GPa
+E_sol = 50e9; %Pa
 v_sol = 0.36; 
 k_sol = 66.8; %W/mK
 p_sol = 7265; %kg/m^3
