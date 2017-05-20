@@ -48,13 +48,27 @@ for i = 1:size(edof_load(:,1))
     end
 end
 
- for i = 1:size(e(1:));
+bc = [];
+ for i = 1:size(e(1,:)')
     if(e(5,i) == 1 || e(5,i) == 5 || e(5,i) == 6)
         bc = [bc;e(1,i)*2-1, 0];
         bc = [bc;e(2,i)*2-1, 0];
     end
-    else if(e(5,i) == 2)
-            
+    if(e(5,i) == 2)
+        bc = [bc;e(1,i)*2, 0];
+        bc = [bc;e(2,i)*2, 0];   
+    end
+ end
+u = solve(K_load,f_load,bc);
 
-u = solve(K_load,f_load);
+ed = extract(edof_load,u);
+
+for i = 1:size(edof_load(:,1))
+   
+    
+    
+end
+
+ fill(ex',ey',ed');
+%  colorbar
 

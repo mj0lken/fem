@@ -59,10 +59,39 @@ bc = [];
         bc = [bc;e(2,i)*2, 0];   
     end
  end
-u = solve(K_load,f_load,bc);
+a_u = solve(K_load,f_load,bc);
 
-ed = extract(edof,u);
+ed = extract(edof_load,a_u);
+
+e_es = [];
+e_et = [];
+for i = 1:size(edof_load(:,1))
+  
+    if(t(4,i) == 1)       
+       [es,et] = plants(ex(i,:),ey(i,:),ep,D_pcb2,ed(i,:));
+        e_es = [e_es;es];
+        e_et = [e_et;et];
+    elseif(t(4,i) == 2)
+        [es,et] = plants(ex(i,:),ey(i,:),ep,D_sol2,ed(i,:));
+        e_es = [e_es;es];
+        e_et = [e_et;et];
+    elseif(t(4,i) == 3)
+
+        [es,et] = plants(ex(i,:),ey(i,:),ep,D_smd2,ed(i,:));
+        e_es = [e_es;es];
+        e_et = [e_et;et];
+    end
+end
+
+n_es = zeros(ndof,1);
+
+for i=1:size(coord,1)
+[c0,c1]=find(edof(:,2:4)==i);
+n_es(i,1)=sum(e_es(c0))/size(c0,1);
+end
+
+ed = extract(edof,n_es);
 
  fill(ex',ey',ed');
-%  colorbar
+ colorbar
 
