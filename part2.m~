@@ -65,22 +65,18 @@ ed = extract(edof_load,a_u);
 
 Seff_el = zeros(ndof,1);
 for i = 1:length(edof_load)
-    T_element = (deltaT(edof(i,2))+deltaT(edof(i,3))+deltaT(edof(i,4)))/3;
+  
     if(t(4,i) == 1)       
        [es,et] = plants(ex(i,:),ey(i,:),ep,D_pcb2,ed(i,:));
-       sigma_zz = v_pcb*(es(1)+es(2))-alpha_pcb*E_pcb*T_element;
-
     elseif(t(4,i) == 2)
         [es,et] = plants(ex(i,:),ey(i,:),ep,D_sol2,ed(i,:));
-        sigma_zz = v_sol*(es(1)+es(2))-alpha_sol*E_sol*T_element;
-
     elseif(t(4,i) == 3)
         [es,et] = plants(ex(i,:),ey(i,:),ep,D_smd2,ed(i,:));
-        sigma_zz = v_smd*(es(1)+es(2))-alpha_smd*E_smd*T_element;
+        sigma_zz = v_smd*(es(1)+es(2))-v_smd*E_smd*
     end
     
-    Seff_el(i) = sqrt(es(1)^2 + es(2)^2+ sigma_zz^2 -(es(1)*es(2)) ...
-    -(es(1)*sigma_zz) - (es(2)*sigma_zz) + 3*es(3)^2);
+    sigma_zz = 
+    Seff_el(i) = sqrt(es(1)^2 + es(2)^2+ 3*es(3)^2);
     
 end
 

@@ -1,8 +1,8 @@
 %This contains all constants.
 
-load('e4.mat');
-load('p4.mat');
-load('t4.mat');
+load('e.mat');
+load('p.mat');
+load('t.mat');
 
 
 
