@@ -24,11 +24,12 @@ a_stationary = solve(K,f);
 
 
 %Plotting the temperature field
-% ed = extract(edof,a_stationary);
+% ed = extract(edof,a_stationary-273.15);
 
 % colormap(hot)
 % fill(ex',ey',ed');
 % colorbar
+% colormap(jet)
 %Solving task number two 
 
 part2;

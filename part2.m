@@ -23,7 +23,7 @@ ep = [2 thickness];
 deltaT = a_stationary - T0;
 
 
-for i = 1:size(edof_load(:,1))
+for i = 1:length(edof_load)
     
     T_element = (deltaT(edof(i,2))+deltaT(edof(i,3))+deltaT(edof(i,4)))/3;
     if(t(4,i) == 1)       
@@ -85,18 +85,18 @@ end
 
 ed = extract(edof,Seff_nod);
 
-%  fill(ex',ey',ed');
-%  colormap(jet)
-%  colorbar
+ fill(ex',ey',ed');
+ colormap(jet)
+ colorbar
  
-eldraw2(ex,ey,[2,2,1])   
+figure
+eldraw2(ex,ey,[1,2,1])   
 
  for i = 1:2:size(a_u)
-     coord(1,1)
      pos = (i+1)/2;
      coord(pos,1) = coord(pos,1)+a_u(i)*1e2;
      coord(pos,2) = coord(pos,2) + a_u(i+1)*1e2;
  end
  
  [ex,ey]=coordxtr(edof,coord,(1:ndof)',3); 
-eldraw2(ex,ey,[3,4,2])   
+eldraw2(ex,ey,[1,4,2])   
