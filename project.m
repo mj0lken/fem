@@ -1,6 +1,7 @@
 %% Project
 clear all
 clc
+addpath(genpath('calfem'))
 
 %Loading all constants, including constitive matrices and mesh values
 project_constants;
@@ -9,28 +10,13 @@ project_constants;
 mesh_to_calfem;
 
 
-K = zeros(ndof);
-C = zeros(ndof);
-f = zeros(ndof,1);
-
-%Solver K, C, Kc and f
-FE_solver;
-
-%Solving the stationary heat
-
-a_stationary = solve(K,f);
-
-% transient_heat_flow;
+%Computing the stationary heat flow
+heat_flow;
 
 
-%Plotting the temperature field
-% ed = extract(edof,a_stationary-273.15);
+%Computing the transient heat flow 
+transient_heat_flow;
 
-% colormap(hot)
-% fill(ex',ey',ed');
-% colorbar
-% colormap(jet)
-%Solving task number two 
-
-part2;
+%Computing the von Mises stress field and the displacement field
+% part2;
 

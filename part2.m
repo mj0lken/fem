@@ -1,3 +1,5 @@
+
+%Building the new edof matrix
 edof_load = zeros(nelm,7);
 for i = 1:nelm
     n1 = edof(i,2)*2-1;
@@ -10,12 +12,10 @@ for i = 1:nelm
     n6 = edof(i,4)*2;
     
     edof_load(i,:) = [nelm,n1,n2,n3,n4,n5,n6];
-    
-    
 end
 
-%K-matrix
 
+%Building the stiffness matrix(K_load) and force vector(f-load)
 K_load = zeros(ndof*2);
 f_load = zeros(ndof*2,1);
 ep = [2 thickness];
@@ -48,8 +48,10 @@ for i = 1:length(edof_load)
     end
 end
 
+
+%Creating the boundary conditions vector
 bc = [];
- for i = 1:size(e(1,:)')
+ for i = 1:length(e)
     if(e(5,i) == 1 || e(5,i) == 5 || e(5,i) == 6)
         bc = [bc;e(1,i)*2-1, 0];
         bc = [bc;e(2,i)*2-1, 0];
@@ -59,10 +61,11 @@ bc = [];
         bc = [bc;e(2,i)*2, 0];   
     end
  end
+ 
 a_u = solve(K_load,f_load,bc);
-
 ed = extract(edof_load,a_u);
 
+%Computing the von Mises stress field
 Seff_el = zeros(ndof,1);
 for i = 1:length(edof_load)
     T_element = (deltaT(edof(i,2))+deltaT(edof(i,3))+deltaT(edof(i,4)))/3;
@@ -92,19 +95,26 @@ for i=1:size(coord,1)
 end
 
 ed = extract(edof,Seff_nod);
-
- fill(ex',ey',ed');
- colormap(jet)
- colorbar
+figure(8);
+fill(ex',ey',ed');
+title({'Von Mises stress field'});
+c = colorbar;
+xlabel('x (m)','FontSize',12);
+ylabel('y (m)','FontSize',12);
+ylabel(c,'Pa','FontSize',15);
+colormap(jet);
  
-figure
-eldraw2(ex,ey,[1,2,1])   
-
+ 
+%Computing the displacement field
+figure(9)
+eldraw2(ex,ey,[1,2,1])  
  for i = 1:2:size(a_u)
      pos = (i+1)/2;
-     coord(pos,1) = coord(pos,1)+a_u(i)*1e2;
-     coord(pos,2) = coord(pos,2) + a_u(i+1)*1e2;
+     coord(pos,1) = coord(pos,1)+a_u(i)*5e1;
+     coord(pos,2) = coord(pos,2) + a_u(i+1)*5e1;
  end
  
  [ex,ey]=coordxtr(edof,coord,(1:ndof)',3); 
-eldraw2(ex,ey,[1,4,2])   
+eldraw2(ex,ey,[1,4,2])  
+xlabel('x (m)','FontSize',12);
+ylabel('y (m)','FontSize',12);

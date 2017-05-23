@@ -1,3 +1,7 @@
+K = zeros(ndof);
+C = zeros(ndof);
+f = zeros(ndof,1);
+
 
 for i = 1:length(edof)
     
@@ -50,4 +54,18 @@ for i = 1:length(e)
     end
 end
 
+%Solving the stationary heat
+a_stationary = solve(K,f);
+
+ ed = extract(edof,a_stationary-273.15);
+  figure(1)
+  fill(ex',ey',ed');
+  title({'Stationary heat flow'});
+  c = colorbar;
+  xlabel('x (m)','FontSize',12);
+  ylabel('y (m)','FontSize',12);
+  ylabel(c,'^{\circ}C','FontSize',15);
+  colormap(jet);
+  hold off;
+ 
     
