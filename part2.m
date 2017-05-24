@@ -102,7 +102,7 @@ c = colorbar;
 xlabel('x (m)','FontSize',12);
 ylabel('y (m)','FontSize',12);
 ylabel(c,'Pa','FontSize',15);
-set(h,'EdgeColor','none')
+% set(h,'EdgeColor','none')
 colormap(jet);
  
  

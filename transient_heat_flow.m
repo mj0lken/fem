@@ -26,7 +26,7 @@ for i = 2:6
     ylabel(c,'^{\circ}C','FontSize',15);
     caxis([29, 75]);
     colormap(jet);
-    set(h,'EdgeColor','none')
+%     set(h,'EdgeColor','none')
 end
 
 figure(7)
@@ -37,4 +37,4 @@ ylabel('y (m)','FontSize',12);
 ylabel(c,'^{\circ}C','FontSize',15);
 colorbar;
 colormap(jet);
-set(h,'EdgeColor','none')
+% set(h,'EdgeColor','none')
