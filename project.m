@@ -18,5 +18,5 @@ heat_flow;
 transient_heat_flow;
 
 %Computing the von Mises stress field and the displacement field
-% part2;
+part2;
 

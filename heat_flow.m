@@ -59,12 +59,13 @@ a_stationary = solve(K,f);
 
  ed = extract(edof,a_stationary-273.15);
   figure(1)
-  fill(ex',ey',ed');
+  h = fill(ex',ey',ed');
   title({'Stationary heat flow'});
   c = colorbar;
   xlabel('x (m)','FontSize',12);
   ylabel('y (m)','FontSize',12);
   ylabel(c,'^{\circ}C','FontSize',15);
+  set(h,'EdgeColor','none')
   colormap(jet);
   hold off;
  

@@ -96,12 +96,13 @@ end
 
 ed = extract(edof,Seff_nod);
 figure(8);
-fill(ex',ey',ed');
+h = fill(ex',ey',ed');
 title({'Von Mises stress field'});
 c = colorbar;
 xlabel('x (m)','FontSize',12);
 ylabel('y (m)','FontSize',12);
 ylabel(c,'Pa','FontSize',15);
+set(h,'EdgeColor','none')
 colormap(jet);
  
  

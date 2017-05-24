@@ -18,7 +18,7 @@ for i = 2:6
     end
     ed = extract(edof,a_t(:,timenbr)-274.15);
     timenbr = timenbr+20;
-    fill(ex',ey',ed');
+    h = fill(ex',ey',ed');
     title({'Transient heat flow'});
     c = colorbar;
     xlabel('x (m)','FontSize',12);
@@ -26,13 +26,15 @@ for i = 2:6
     ylabel(c,'^{\circ}C','FontSize',15);
     caxis([29, 75]);
     colormap(jet);
+    set(h,'EdgeColor','none')
 end
 
 figure(7)
-fill(ex',ey',ed');
+h = fill(ex',ey',ed');
 title({'Transient heat flow'});
 xlabel('x (m)','FontSize',12);
 ylabel('y (m)','FontSize',12);
 ylabel(c,'^{\circ}C','FontSize',15);
 colorbar;
 colormap(jet);
+set(h,'EdgeColor','none')
