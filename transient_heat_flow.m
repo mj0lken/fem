@@ -16,7 +16,7 @@ for i = 2:6
     if(i == 6)
         timenbr = 1000;
     end
-    ed = extract(edof,a_t(:,timenbr)-274.15);
+    ed = extract(edof,a_t(:,timenbr)-273.15);
     timenbr = timenbr+20;
     h = fill(ex',ey',ed');
     title('Transient heat flow','FontSize', 20);
@@ -40,3 +40,5 @@ set(gca,'fontsize',14)
 colorbar;
 colormap(jet);
 % set(h,'EdgeColor','none')
+
+diff_trans_stat = sum(abs(a_t(:,time)) - abs(a_stationary))

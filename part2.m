@@ -97,12 +97,13 @@ end
 ed = extract(edof,Seff_nod);
 figure(8);
 h = fill(ex',ey',ed');
-title('Von Mises stress field','FontSize', 26);
+set(gca,'fontsize',14)
+title('Von Mises stress field','FontSize', 18);
 c = colorbar;
 xlabel('x (m)','FontSize',18);
 ylabel('y (m)','FontSize',18);
 ylabel(c,'Pa','FontSize',18);
-set(gca,'fontsize',14)
+
 % set(h,'EdgeColor','none')
 colormap(jet);
  
@@ -118,7 +119,7 @@ eldraw2(ex,ey,[1,2,1])
  
  [ex,ey]=coordxtr(edof,coord,(1:ndof)',3); 
 eldraw2(ex,ey,[1,4,2])  
-title('Displacement field','FontSize', 20)
+set(gca,'fontsize',14)
+title('Displacement field','FontSize', 18)
 xlabel('x (m)','FontSize',18);
 ylabel('y (m)','FontSize',18);
-set(gca,'fontsize',14)
